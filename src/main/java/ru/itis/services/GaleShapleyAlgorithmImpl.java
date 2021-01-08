@@ -11,9 +11,9 @@ public class GaleShapleyAlgorithmImpl implements GaleShapleyAlgorithm {
     public Map<Object, Object> match(Map<Object, List<Object>> men, Map<Object, List<Object>> women) {
         Map<Object, Object> womenPair = new HashMap<>();
         List<Object> freeMen = new LinkedList<>(men.keySet());
-        for (Object id : women.keySet()) {
-            womenPair.put(id, null);
-        }
+//        for (Object id : women.keySet()) {
+//            womenPair.put(id, null);
+//        }
         while (freeMen.size() > 0) {
             List<Object> tmpList = new LinkedList<>(freeMen);
             for (Object man : freeMen) {
@@ -21,12 +21,15 @@ public class GaleShapleyAlgorithmImpl implements GaleShapleyAlgorithm {
                 if (womenPair.get(firstWoman) == null) {
                     womenPair.put(firstWoman, man);
                     tmpList.remove(man);
-                } else if (women.get(firstWoman).indexOf(man) - women.get(firstWoman).indexOf(womenPair.get(firstWoman)) < 0) {
-                    men.get(womenPair.get(firstWoman)).remove(firstWoman);
-                    tmpList.add(womenPair.get(firstWoman));
-                    womenPair.put(firstWoman, man);
-                    tmpList.remove(man);
-                } else {
+                }
+                try {
+                    if (women.get(firstWoman).indexOf(man) - women.get(firstWoman).indexOf(womenPair.get(firstWoman)) < 0) {
+                        men.get(womenPair.get(firstWoman)).remove(firstWoman);
+                        tmpList.add(womenPair.get(firstWoman));
+                        womenPair.put(firstWoman, man);
+                        tmpList.remove(man);
+                    }
+                } catch (NullPointerException e) {
                     men.get(man).remove(firstWoman);
                 }
             }

@@ -31,12 +31,12 @@ public class HateoasApplication {
         Master master1 = Master.builder().college(college).name("Werner").surname("Heisenberg").build();
         Master master2 = Master.builder().college(college).name("Paul").surname("Dirac").build();
         Master master3 = Master.builder().college(college).name("Wolfgang").surname("Pauli").build();
-        Master master4 = Master.builder().college(college).name("Hendrik").surname("Kramers").build();
-        Master master5 = Master.builder().college(college).name("Nathan").surname("Rosen").build();
-        Master master6 = Master.builder().college(college).name("Nath").surname("Bose").build();
-        Master master7 = Master.builder().college(college).name("John").surname("Neumann").build();
-        Master master8 = Master.builder().college(college).name("Lev").surname("Landau").build();
-        mastersRepository.saveAll(asList(master1, master2, master3, master4, master5, master6, master8, master7));
+//        Master master4 = Master.builder().college(college).name("Hendrik").surname("Kramers").build();
+//        Master master5 = Master.builder().college(college).name("Nathan").surname("Rosen").build();
+//        Master master6 = Master.builder().college(college).name("Nath").surname("Bose").build();
+//        Master master7 = Master.builder().college(college).name("John").surname("Neumann").build();
+//        Master master8 = Master.builder().college(college).name("Lev").surname("Landau").build();
+        mastersRepository.saveAll(asList(master1, master2, master3)); //, master4, master5, master6, master8, master7));
 
         MasterApplication masterApplication1 = MasterApplication.builder().master(master1)
                 .advisers(asList(academicAdviser1, academicAdviser3, academicAdviser2)).build();
@@ -47,39 +47,39 @@ public class HateoasApplication {
         masterApplicationsRepository.save(masterApplication2);
 
         MasterApplication masterApplication3 = MasterApplication.builder().master(master3)
-                .advisers(asList(academicAdviser1, academicAdviser3, academicAdviser2)).build();
+                .advisers(asList(academicAdviser3, academicAdviser1, academicAdviser2)).build();
         masterApplicationsRepository.save(masterApplication3);
 
-        MasterApplication masterApplication4 = MasterApplication.builder().master(master4)
-                .advisers(asList(academicAdviser3, academicAdviser2, academicAdviser1)).build();
-        masterApplicationsRepository.save(masterApplication4);
-
-        MasterApplication masterApplication5 = MasterApplication.builder().master(master5)
-                .advisers(asList(academicAdviser2, academicAdviser3, academicAdviser1)).build();
-        masterApplicationsRepository.save(masterApplication5);
-
-        MasterApplication masterApplication6 = MasterApplication.builder().master(master6)
-                .advisers(asList(academicAdviser3, academicAdviser1, academicAdviser2)).build();
-        masterApplicationsRepository.save(masterApplication6);
-
-        MasterApplication masterApplication7 = MasterApplication.builder().master(master7)
-                .advisers(asList(academicAdviser2, academicAdviser3, academicAdviser1)).build();
-        masterApplicationsRepository.save(masterApplication7);
-
-        MasterApplication masterApplication8 = MasterApplication.builder().master(master8)
-                .advisers(asList(academicAdviser1, academicAdviser2, academicAdviser3)).build();
-        masterApplicationsRepository.save(masterApplication8);
+//        MasterApplication masterApplication4 = MasterApplication.builder().master(master4)
+//                .advisers(asList(academicAdviser3, academicAdviser2, academicAdviser1)).build();
+//        masterApplicationsRepository.save(masterApplication4);
+//
+//        MasterApplication masterApplication5 = MasterApplication.builder().master(master5)
+//                .advisers(asList(academicAdviser2, academicAdviser3, academicAdviser1)).build();
+//        masterApplicationsRepository.save(masterApplication5);
+//
+//        MasterApplication masterApplication6 = MasterApplication.builder().master(master6)
+//                .advisers(asList(academicAdviser3, academicAdviser1, academicAdviser2)).build();
+//        masterApplicationsRepository.save(masterApplication6);
+//
+//        MasterApplication masterApplication7 = MasterApplication.builder().master(master7)
+//                .advisers(asList(academicAdviser2, academicAdviser3, academicAdviser1)).build();
+//        masterApplicationsRepository.save(masterApplication7);
+//
+//        MasterApplication masterApplication8 = MasterApplication.builder().master(master8)
+//                .advisers(asList(academicAdviser1, academicAdviser2, academicAdviser3)).build();
+//        masterApplicationsRepository.save(masterApplication8);
 
         AcademicAdviserApplication app1 = AcademicAdviserApplication.builder().academicAdviser(academicAdviser1)
-                .masters(asList(master1, master2, master3, master4, master7, master8, master5, master6)).required(3).build();
+                .masters(asList(master1, master2, master3)).required(1).build();
         academicAdviserApplicationsRepository.save(app1);
 
         AcademicAdviserApplication app2 = AcademicAdviserApplication.builder().academicAdviser(academicAdviser2)
-                .masters(asList(master8, master7, master1, master2, master3, master6, master4, master5)).required(3).build();
+                .masters(asList(master1, master2, master3)).required(1).build();
         academicAdviserApplicationsRepository.save(app2);
 
         AcademicAdviserApplication app3 = AcademicAdviserApplication.builder().academicAdviser(academicAdviser3)
-                .masters(asList(master8, master1, master7, master2, master6, master3, master5, master4)).required(2).build();
+                .masters(asList(master2, master1, master3)).required(1).build();
         academicAdviserApplicationsRepository.save(app3);
     }
 

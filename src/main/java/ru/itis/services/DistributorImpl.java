@@ -46,7 +46,7 @@ public class DistributorImpl implements Distributor {
         Map<Object, Object> matches = galeShapleyAlgorithm.match(masters, advisers);
         Map<AcademicAdviser, Master> result = new HashMap<>();
         for (Map.Entry<Object, Object> entry : matches.entrySet()) {
-            result.put(tmpMap.get((Integer) entry.getKey()), (Master) entry.getValue());
+            result.put((AcademicAdviser) entry.getKey(), (Master) entry.getValue());
         }
         return result;
     }
